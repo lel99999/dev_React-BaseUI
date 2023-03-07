@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REACT!</title>
+        <style>
+            #container {
+                padding: 50px; background-color: #EEE;
+                }
+            #container h1 {
+                font-size: 48px; font-family: sans-serif; color: #0080A8;
+                }
+        </style>
+    </head>
+    <!-- 
+        <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min. js"></script>
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <body>
+        <div id="container"></div>
+        <script type="text/babel">
+        /*     
+            var destination = document.querySelector("#container");
+          
+            ReactDOM.render(
+                <div>
+                    <h1>Batman</h1>
+                    <h1>Iron Man</h1>
+                    <h1>Nicolas Cage</h1>
+                    <h1>Mega Man</h1>
+                </div>,
+                destination
+            );
+        */
+            var HelloWorld = React.createClass({
+                render: function(){
+                    return (
+                        <p>Hello, {this.props.greetTarget}!</p>
+                    );
+                }
+            });
+
+            var Buttonify = React.createClass({
+                render: function(){
+                    return(
+                        <div>
+                            <button type={this.props.behavior}>{this.props.children}</button>
+                        </div>
+                    );
+                }
+            });
+
+/*            ReactDOM.render(
+            <div>
+             <HelloWorld greetTarget="Batman"/>
+             <HelloWorld greetTarget="Iron Man"/>
+             <HelloWorld greetTarget="Mega Man"/>
+             <HelloWorld greetTarget="Catwoman"/>
+            </div>,
+               document.querySelector("#container")
+              );    
+*/
+            ReactDOM.render(
+                <div>
+                    <Buttonify behavior="Submit">SEND DATA</Buttonify>
+                </div>,
+                document.querySelector("#container")
+            );
+        </script>
+        test
+    </body>
+</html>
