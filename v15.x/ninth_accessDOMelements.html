@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REACT!</title>
+        <style>
+            #container {
+                padding: 50px; 
+                background-color: #EEE;
+            }
+        </style>
+    </head>
+    <!-- 
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min. js">
+    </script>
+    --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- https://facebook.github.io/react/docs/events.html -->
+    <body>
+        <div id="container"></div>
+        <script type="text/babel">
+            var destination = document.querySelector("#container");
+
+            var Colorizer = React.createClass({
+                getInitialState: function(){
+                    return{
+                        color: '',
+                        bgColor: ''
+                    }
+                },
+                colorValue: function(e){
+                    this.setState({color: e.target.value});
+                },
+                setNewColor: function(e){
+                    this.setState({bgColor: this.state.color});
+
+                    this._input.value = "";
+                    this._input.focus();
+
+                    e.preventDefault();
+                    console.log("bgColor: " + this.state.color);
+                },
+                render: function(){
+                    var squareStyle = {
+                        backgroundColor: this.state.bgColor,
+                        padding: 50,
+                        border: "#333 2px dotted",
+                        //backgroundColor: "#ffc53a",
+                        width: 150,
+                        height: 100,
+                        borderRadius: 10,
+                        textAlign: "center"
+                        
+                    };
+                    var self = this;
+
+                    return(
+                        <div className="colorArea">
+                            <div style={squareStyle} className="colorSquare" bgColor={this.state.color}></div>
+
+                            <form onSubmit={this.setNewColor}>
+                                <input 
+                                    ref={
+                                        function(el){
+                                            self._input = el;
+                                        }
+                                    }
+                                    onChange={this.colorValue}
+                                    placeholder="Enter a color value">
+                                </input>
+                                <button type="submit">go</button>
+                            </form>
+                        </div>
+                    );
+                }
+            });
+            ReactDOM.render(
+                <div>
+                    <Colorizer/>
+                </div>,
+                destination
+            );
+        </script>
+    </body>
+</html>
