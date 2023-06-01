@@ -8,3 +8,4 @@ $babel-node functional-playground/play.js --presets es2015-node5
 # Requires prepend $(npm bin)/
 $$(npm bin)/babel-node functional-playground/play.js --presets es2015-node5
 ```
+#### System setup
